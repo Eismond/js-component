@@ -44,6 +44,7 @@ const modals = () => {
 
     bindModal(callEngBtn, modalEngineer, modalEngineerClose);
     bindModal('.phone_link', '.popup', '.popup .popup_close');
+    bindModal('.popup_calc_btn', '.popup_calc', '.popup_calc .popup_calc_close');
     showModalByTime('.popup', 6000000)
 }
 
