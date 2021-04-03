@@ -13,6 +13,13 @@ const modals = () => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
         })
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'visible';
+            }
+        });
     }
 
     const callEngBtn = document.querySelector('.popup_engineer_btn'),
