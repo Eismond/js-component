@@ -1,13 +1,19 @@
 const modals = () => {
-    function bindModal(trigger, modal, close) {
-        trigger.addEventListener('click', (e) => {
-            if (e.target) {
-                e.preventDefault();
-            }
+    function bindModal(triggerSelector, modalSelector, closeSelector) {
+        const trigger = document.querySelectorAll(triggerSelector),
+            modal = document.querySelector(modalSelector),
+            close = document.querySelector(closeSelector)
 
-            modal.style.display = 'block';
-            // document.body.style.overflow = 'hidden';
-            document.body.classList.add('modal-open');
+        trigger.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target) {
+                    e.preventDefault();
+                }
+
+                modal.style.display = 'block';
+                // document.body.style.overflow = 'hidden';
+                document.body.classList.add('modal-open');
+            })
         })
 
         close.addEventListener('click', () => {
@@ -25,11 +31,20 @@ const modals = () => {
         });
     }
 
-    const callEngBtn = document.querySelector('.popup_engineer_btn'),
-        modalEngineer = document.querySelector('.popup_engineer'),
-        modalEngineerClose = document.querySelector('.popup_engineer .popup_close');
+    function showModalByTime(selector, time = 6000) {
+        setTimeout(() => {
+            document.querySelector(selector).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }, time)
+    }
+
+    const callEngBtn = '.popup_engineer_btn',
+        modalEngineer = '.popup_engineer',
+        modalEngineerClose = '.popup_engineer .popup_close';
 
     bindModal(callEngBtn, modalEngineer, modalEngineerClose);
+    bindModal('.phone_link', '.popup', '.popup .popup_close');
+    showModalByTime('.popup')
 }
 
 export default modals;
